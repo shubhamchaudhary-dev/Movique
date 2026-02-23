@@ -1,153 +1,106 @@
-# Travel Mitre – AI-powered Smart Travel Assistant
+# PathPredict AI – Intelligent Travel Time & Recommendation System
 
-Travel Mitre is a machine learning and NLP-driven travel planning assistant designed to provide personalized trip suggestions, predict travel time, and generate optimized itineraries.
-The system combines regression models, artificial neural networks (ANN), and contextual NLP filtering to deliver accurate travel time predictions and highly relevant travel recommendations.
+PathPredict AI is a machine learning and NLP-powered smart travel assistant that predicts travel time and generates personalized travel recommendations using Artificial Neural Networks (ANN).
 
----
-
-## Features
-
-* Predicts travel time using a trained ANN regression model
-* Provides destination recommendations based on user preferences
-* Generates recommended itineraries with NLP-based context understanding
-* Accepts real-time user inputs to calculate estimated travel duration
-* Lightweight and easy to integrate into travel-planning apps
+The system combines regression modeling, contextual filtering, and lightweight NLP logic to provide accurate travel-time estimation and intelligent trip planning.
 
 ---
 
-## Model Architecture
+## 🚀 Key Features
 
-| Component          | Technology                                                   |
-| ------------------ | ------------------------------------------------------------ |
-| Regression Model   | Artificial Neural Network (ANN)                              |
-| Input Features     | Distance, traffic level, weather, time-of-day, location type |
-| Preprocessing      | Normalization (Scaler)                                       |
-| NLP Engine         | Keyword extraction + contextual filtering                    |
-| Evaluation Metrics | R² Score                                                     |
+- Travel time prediction using ANN regression (R² = 0.91)
+- Personalized destination recommendations
+- NLP-based itinerary generation
+- Real-time travel duration estimation
+- Optimized preprocessing for faster inference
 
 ---
 
-## Model Performance (Real Metrics)
+## 🧠 Model Architecture
 
-Using your actual notebook output:
-
-| Metric       | Value    |
-| ------------ | -------- |
-| **R² Score** | **0.91** |
-
-Interpretation:
-The model explains **91% of the variance** in travel time prediction, indicating a strong fit and robust regression accuracy.
-
----
-
-## Training Workflow
-
-1. Load and preprocess dataset
-2. Normalize features using StandardScaler
-3. Split data into train/test sets
-4. Train ANN model with optimized parameters
-5. Evaluate using R² score
-6. Deploy model for interactive user predictions
+| Component            | Technology Used |
+|----------------------|----------------|
+| Regression Model     | Artificial Neural Network (ANN) |
+| Input Features       | Distance, Traffic Level, Weather, Time of Day |
+| Data Preprocessing   | StandardScaler Normalization |
+| NLP Engine           | Keyword Extraction + Context Filtering |
+| Evaluation Metric    | R² Score |
 
 ---
 
-## Example Usage
+## 📊 Model Performance
 
-### Predicting Travel Time
+| Metric       | Value |
+|--------------|--------|
+| R² Score     | 0.91 |
+
+The model explains 91% of travel-time variance, indicating strong predictive performance.
+
+---
+
+## ⚙️ Training Workflow
+
+1. Data loading and preprocessing  
+2. Feature normalization  
+3. Train-test split  
+4. ANN training with optimized parameters  
+5. Performance evaluation using R²  
+6. Model deployment for inference  
+
+---
+
+## 🧪 Example Usage
 
 ```python
-from sklearn.preprocessing import StandardScaler
 from tensorflow.keras.models import load_model
 import numpy as np
+import pickle
 
 model = load_model("travel_time_model.h5")
 
-# Example user input
+with open("scaler.pkl", "rb") as f:
+    scaler = pickle.load(f)
+
 user_input = np.array([[distance, traffic_level, weather_code, time_of_day]])
 
-# Scale input
 scaled_input = scaler.transform(user_input)
 
-# Predict
 predicted_time = model.predict(scaled_input)
+
 print("Predicted Travel Time:", predicted_time[0][0], "minutes")
 ```
 
 ---
 
-## Dataset Structure
-
-Your dataset typically contains:
+## 📁 Project Structure
 
 ```
-distance          → numeric
-traffic_level     → numeric
-weather           → categorical (encoded)
-time_of_day       → numeric or one-hot encoded
-actual_time       → ground truth label
-```
-
----
-
-## Project File Structure
-
-```
-Travel-Mittra/
-│── travel_time_ANN.ipynb        # Training notebook
-│── trip_time_dataset.csv        # Dataset
-│── travel_time_model.h5         # Trained ANN model
-│── scaler.pkl                   # Scaler for inference
-│── README.md                    # Documentation
+PathPredict-AI/
+│── travel_time_ANN.ipynb
+│── trip_time_dataset.csv
+│── travel_time_model.h5
+│── scaler.pkl
+│── README.md
 ```
 
 ---
 
-## How It Works
+## 🔮 Future Enhancements
 
-### 1. Regression Model
-
-Predicts expected travel time based on historical data and user inputs.
-
-### 2. Recommendation Engine
-
-Ranks travel destinations using:
-
-* user preferences
-* historical selection patterns
-* contextual query filtering
-
-### 3. Itinerary Generation
-
-Basic NLP logic generates a day-wise plan using keywords and templates.
+- Deep learning–based itinerary generation
+- LLM-powered conversational travel assistant
+- Live traffic & weather API integration
+- Region-wise dataset expansion
 
 ---
 
-## Improvements Achieved
+## 🤝 Contributing
 
-* Achieved **0.91 R² score**, significantly outperforming baseline regression models
-* Improved itinerary relevance by approximately **40%** through contextual filtering
-* Reduced response time by **25%** using optimized preprocessing and reduced computation overhead
+Pull requests and issue discussions are welcome.
 
 ---
 
-## Future Enhancements
+## 👨‍💻 Author
 
-* Add deep learning-based text generation for dynamic itineraries
-* Integrate LLM-based travel chat interface
-* Add live traffic and weather API integration
-* Expand dataset to improve generalization across regions
-
----
-
-## Contributing
-
-Contributions are welcome.
-You may submit a pull request or open an issue for discussion.
-
----
-
-## Contact
-
-Author: Shubham Chaudhary
-
----
+Shubham Chaudhary  
+GitHub: https://github.com/shubhamchaudhary-dev
